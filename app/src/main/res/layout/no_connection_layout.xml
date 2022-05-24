@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:background="@color/home_color"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_wifi_off" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_noInternet"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="26sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_desc_noInternet"
+        android:gravity="center"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:textSize="18dp"
+        />
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        android:layout_width="314dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:enabled="false"
+        android:background="@drawable/borer_rait"
+        android:fontFamily="@font/dmsansbold"
+        android:gravity="center"
+        android:text="@string/str_tryAgin"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:spinning_bar_color="#FFF"
+        app:spinning_bar_padding="2dp"
+        app:spinning_bar_width="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</LinearLayout>

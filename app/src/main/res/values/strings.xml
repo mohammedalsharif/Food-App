@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name" translatable="false">Food App</string>
+    <string name="text_welcome" translatable="false">Welcome</string>
+    <string name="bottom_text_welcome">Welcome with us, log in to your account</string>
+    <string name="text_new_account">create a new account</string>
+    <string name="text_create_account">create account</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="sign_in">"Sign in"</string>
+    <string name="password">Password</string>
+    <string name="email">Email Address</string>
+    <string name="or_num">or</string>
+
+    <string name="account_balance" translatable="false">Account Balance</string>
+    <string name="balance_currency" translatable="false">$</string>
+    <string name="balance_amount" translatable="false">524.99</string>
+    <string name="text_new_account_SignUp">@string/text_new_account</string>
+    <string name="text_have_Account">You already have an account ?</string>
+    <string name="getUp">قم</string>
+    <string name="your_name">Your Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="getstartxt">Get started</string>
+    <string name="str_noInternet">No internet Connection</string>
+    <string name="str_desc_noInternet">Your internet connection is currently not available please check or try again.</string>
+    <string name="str_tryAgin">Try again</string>
+    <string name="str_Register">Register</string>
+    <string name="str_remember_Me">Remember Me ?</string>
+    <string name="str_login">Log In</string>
+    <string name="str_signUp">Sign-Up</string>
+    <string name="str_see_more">see more..</string>
+    <string name="str_delicious_food_for_you">Delicious food for you</string>
+    <string name="str_my_profile">My profile</string>
+    <string name="str_personal_details">Personal details</string>
+    <string name="str_search">Search...</string>
+    <string name="str_home">Home</string>
+    <string name="str_favorite">favorite</string>
+    <string name="str_user">user</string>
+    <string name="str_cart">cart</string>
+    <string name="str_foods">Foods</string>
+    <string name="str_drins">Drinks</string>
+    <string name="str_snacks">Snacks</string>
+
+
+    <string-array name="ld_activityScreenTitles">
+        <item>My Account</item>
+        <item>orders</item>
+        <item>offer and promo</item>
+        <item>Privacy policy</item>
+        <item />
+        <item>Log Out</item>
+    </string-array>
+</resources>

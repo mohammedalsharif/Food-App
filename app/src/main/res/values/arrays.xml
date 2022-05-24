@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/ic_user</item>
+        <item>@drawable/ic_buy</item>
+        <item>@drawable/ic_offer</item>
+        <item>@drawable/ic_securityalt</item>
+        <item>0</item>
+        <item>@drawable/ic_baseline_arrow_back_24</item>
+    </array>
+
+</resources>

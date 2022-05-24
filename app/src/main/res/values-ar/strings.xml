@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تطبيق طعام</string>
+    <string name="text_welcome">أهلا وسهلا</string>
+    <string name="forgot_pass">نسيت كلمة المرور؟</string>
+    <string name="sign_in">"تسجيل الدخول"</string>
+    <string name="password">كلمة المرور</string>
+    <string name="email">البريد الاكتروني</string>
+    <string name="or_num">او قم</string>
+    <string name="text_create_account">إنشاء حساب</string>
+    <string name="text_new_account_SignUp">إنشاء حساب جديد</string>
+    <string name="text_have_Account">لديك حساب بالفعل ؟ قم</string>
+    <string name="getUp">قم</string>
+    <string name="your_name">الأسم كامل</string>
+    <string name="bottom_text_welcome">مرحبا بكم معنا ، سجل الدخول إلى حسابك</string>
+    <string name="text_new_account">انشاء حساب جديد.</string>
+
+    <string name="getstartxt">بدء</string>
+    <string name="str_noInternet">لا يوجد اتصال بالإنترنت</string>
+    <string name="str_desc_noInternet">اتصال الإنترنت الخاص بك غير متاح حاليًا ، يرجى التحقق أو المحاولة مرة أخرى.</string>
+    <string name="str_tryAgin">حاول مرة أخري</string>
+    <string name="str_Register" >تسجيل</string>
+    <string name="str_remember_Me">تذكرني ؟</string>
+    <string name="str_login">تسجيل دخول</string>
+    <string name="str_signUp">اشتراك</string>
+    <string name="str_see_more">شاهد المزيد..</string>
+    <string name="str_delicious_food_for_you">طعام لذيذ لك</string>
+    <string name="str_my_profile">ملفي الشخصي</string>
+    <string name="str_personal_details">تفاصيل شخصية</string>
+    <string name="str_search">بحث...</string>
+    <string name="str_home">الرئيسية</string>
+    <string name="str_favorite">المفضلة</string>
+    <string name="str_user">المستخدم</string>
+    <string name="str_cart">السلة</string>
+
+    <string name="str_foods">أغذية</string>
+    <string name="str_drins">مشروبات</string>
+    <string name="str_snacks">وجبات خفيفة</string>
+    <string-array name="ld_activityScreenTitles">
+        <item>حسابي</item>
+        <item>الطلبات</item>
+        <item>العرض والترويج</item>
+        <item>سياسةالخصوصية</item>
+        <item />
+        <item>تسجيل خروج</item>
+    </string-array>
+</resources>

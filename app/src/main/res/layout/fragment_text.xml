@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_color">
+
+
+    <TextView
+        android:id="@+id/food_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:shadowColor="#40000000"
+        android:textSize="40sp"
+        android:shadowDy="8"
+        android:shadowRadius="4"
+
+
+        android:text="@string/str_delicious_food_for_you"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/font_rounded"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/food_search"
+        android:layout_width="314dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/input_border"
+        android:backgroundTint="#E6E4E4"
+        android:textSize="17sp"
+        app:searchIcon="@drawable/ic_food_search"
+        app:queryBackground="@null"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_title"
+        app:queryHint="@string/str_search" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/food_tab"
+        style="@style/AppTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/home_color"
+
+        android:isScrollContainer="true"
+        app:layout_constraintEnd_toEndOf="@+id/food_search"
+        app:layout_constraintStart_toStartOf="@+id/food_search"
+        app:layout_constraintTop_toBottomOf="@+id/food_search"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:tabTextColor="@color/ic_color">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/food_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_tab" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

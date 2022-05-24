@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="roundImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item>
+    </style>
+
+    <style name="roundImageStarted" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+
+    </style>
+
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/card_custom_corners</item>
+    </style>
+
+    <style name="card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+    </style>
+    <style name="MyThemeOverlay_Toolbar"
+        parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="colorOnPrimary">@color/colorPrimary</item>
+    </style>
+</resources>

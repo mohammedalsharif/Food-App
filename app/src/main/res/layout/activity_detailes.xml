@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_color"
+    tools:context=".ui.DetailsActivity">
+
+    <ImageView
+        android:id="@+id/icBackDet"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/borer_rait"
+        android:backgroundTint="@color/home_color"
+        android:clickable="true"
+        android:elevation="12dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_back_det"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+    <com.ldoublem.thumbUplib.ThumbUpView
+        android:id="@+id/tpv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/borer_rait"
+        android:backgroundTint="@color/home_color"
+        android:clickable="true"
+        android:elevation="12dp"
+        app:cracksColor="#33475f"
+        app:edgeColor="@color/black"
+        app:fillColor="@color/read"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="130dp"
+        android:transitionName="cardTransition"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tpv">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/spinKit"
+                style="@style/SpinKitView.Large.DoubleBounce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/colorPrimary" />
+
+            <ImageView
+                android:id="@+id/food_image"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+
+                android:scaleType="fitCenter"
+                android:src="@drawable/afood" />
+        </FrameLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/etFoodNameDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Veggie tomato mix"
+
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/etFoodPriceDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="N1,900"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:transitionName="priceTransition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFoodNameDet" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFoodPriceDet">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Delivery info"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Delivered between monday aug and thursday 20 from 8pm to 91:32 pm" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Return policy"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately." />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_btn"
+        android:layout_width="314dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/dmsansbold"
+        android:gravity="center"
+        android:text="Add to cart"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
