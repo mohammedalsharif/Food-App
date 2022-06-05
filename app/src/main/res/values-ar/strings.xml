@@ -41,6 +41,7 @@
     <string name="str_desc_deliver_info">يتم التوصيل بين الاثنين أغسطس والخميس 20 من الساعة 8 مساءً حتى 91:32 مساءً.</string>
     <string name="str_policy">يتم فحص جميع أطعمتنا مرتين قبل مغادرة متاجرنا ، لذا في أي حال وجدت طعامًا مكسورًا ، يرجى الاتصال بخطنا الساخن على الفور.</string>
     <string name="str_add_to_cart">أضف إلى السلة</string>
+    <string name="add_to_cart">تم الإظافة الى السلة</string>
     <string-array name="ld_activityScreenTitles">
         <item>الرئيسية</item>
         <item>حسابي</item>

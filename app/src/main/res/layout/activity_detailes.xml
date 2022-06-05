@@ -118,7 +118,7 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/add_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFoodPriceDet">
@@ -153,7 +153,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_btn"
+        android:id="@+id/add_btn"
         android:layout_width="314dp"
         android:layout_height="70dp"
         android:layout_marginBottom="32dp"

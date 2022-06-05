@@ -1,6 +1,7 @@
 package com.examples.foodapp.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -8,13 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.examples.foodapp.databinding.ItemCartBinding;
+import com.examples.foodapp.model.Food;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar> {
-    private List<String> listCart;
+    private List<Food> listCart;
 
-    public void setList(List<String> list) {
+    public void setList(List<Food> list) {
         this.listCart = list;
     }
 
@@ -28,7 +32,20 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHoldar holder, int position) {
-        holder.binding.foodName.setText(listCart.get(position));
+        Food food =listCart.get(position);
+        Picasso.get().load(food.getImageUrl()).fit().into(holder.binding.foodImage, new Callback() {
+            @Override
+            public void onSuccess() {
+                holder.binding.spinKit.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                holder.binding.spinKit.setVisibility(View.VISIBLE);
+            }
+        });
+        holder.binding.foodName.setText(food.getFoodName());
+        holder.binding.foodPrice.setText(food.getFoodPrice());
 
         holder.binding.plusCart.setOnClickListener(view -> {
 
@@ -66,15 +83,15 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar
 
     private String decreasePrice(TextView foodPrice, int numberCart) {
         String priseCart = foodPrice.getText().toString();
-        String priseSub = priseCart.substring(0, priseCart.length() - 2);
+        String priseSub = priseCart.substring(0, priseCart.length() - 1);
         int price = Integer.parseInt(priseSub);
-        return price - (price / numberCart) + " $";
+        return price - (price / numberCart) + "$";
     }
 
     private String increasePrice(TextView foodPrice, int numberCart) {
         String priseCart = foodPrice.getText().toString();
-        String priseSub = priseCart.substring(0, priseCart.length() - 2);
+        String priseSub = priseCart.substring(0, priseCart.length() - 1);
         int price = Integer.parseInt(priseSub);
-        return price + (price / numberCart) + " $";
+        return price + (price / numberCart) + "$";
     }
 }
