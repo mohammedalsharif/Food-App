@@ -15,7 +15,7 @@
     <string name="bottom_text_welcome">مرحبا بكم معنا ، سجل الدخول إلى حسابك</string>
     <string name="text_new_account">انشاء حساب جديد.</string>
 
-    <string name="getstartxt">بدء</string>
+    <string name="getstartxt">البدء</string>
     <string name="str_noInternet">لا يوجد اتصال بالإنترنت</string>
     <string name="str_desc_noInternet">اتصال الإنترنت الخاص بك غير متاح حاليًا ، يرجى التحقق أو المحاولة مرة أخرى.</string>
     <string name="str_tryAgin">حاول مرة أخري</string>
@@ -24,7 +24,7 @@
     <string name="str_login">تسجيل دخول</string>
     <string name="str_signUp">اشتراك</string>
     <string name="str_see_more">شاهد المزيد..</string>
-    <string name="str_delicious_food_for_you">طعام لذيذ لك</string>
+    <string name="str_delicious_food_for_you">طعام لذيذ لك .</string>
     <string name="str_my_profile">ملفي الشخصي</string>
     <string name="str_personal_details">تفاصيل شخصية</string>
     <string name="str_search">بحث...</string>
@@ -36,12 +36,18 @@
     <string name="str_foods">أغذية</string>
     <string name="str_drins">مشروبات</string>
     <string name="str_snacks">وجبات خفيفة</string>
+    <string name="str_delivery_info">معلومات التوصيل</string>
+    <string name="str_return_policy">سياسة العائدات</string>
+    <string name="str_desc_deliver_info">يتم التوصيل بين الاثنين أغسطس والخميس 20 من الساعة 8 مساءً حتى 91:32 مساءً.</string>
+    <string name="str_policy">يتم فحص جميع أطعمتنا مرتين قبل مغادرة متاجرنا ، لذا في أي حال وجدت طعامًا مكسورًا ، يرجى الاتصال بخطنا الساخن على الفور.</string>
+    <string name="str_add_to_cart">أضف إلى السلة</string>
     <string-array name="ld_activityScreenTitles">
+        <item>الرئيسية</item>
         <item>حسابي</item>
         <item>الطلبات</item>
-        <item>العرض والترويج</item>
+        <item>المفضلة</item>
         <item>سياسةالخصوصية</item>
-        <item />
+
         <item>تسجيل خروج</item>
     </string-array>
 </resources>

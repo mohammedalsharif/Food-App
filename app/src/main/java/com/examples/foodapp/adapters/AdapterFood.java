@@ -1,6 +1,7 @@
 package com.examples.foodapp.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.examples.foodapp.databinding.ItemFoodBinding;
 import com.examples.foodapp.model.Food;
+import com.facebook.shimmer.Shimmer;
+import com.facebook.shimmer.ShimmerDrawable;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -22,9 +25,9 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.viewHolder> {
     setOnClickItemListener itemListener;
 
 
-    public AdapterFood(Context context,setOnClickItemListener itemListener) {
+    public AdapterFood(Context context, setOnClickItemListener itemListener) {
         this.itemListener = itemListener;
-        this.context=context;
+        this.context = context;
     }
 
     public void setListFood(List<Food> listFood) {
@@ -42,6 +45,15 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.viewHolder> {
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Food foods = listFood.get(position);
+        Shimmer shimmer = new Shimmer.ColorHighlightBuilder()
+                .setBaseColor(Color.parseColor("#FFFFFF"))
+                .setBaseAlpha(1)
+                .setHighlightColor(Color.parseColor("#E7E7E7"))
+                .setHighlightAlpha(1)
+                .setDropoff(50)
+                .build();
+        ShimmerDrawable shimmerDrawable =new ShimmerDrawable();
+        shimmerDrawable.setShimmer(shimmer);
         Picasso.get().load(foods.getImageUrl()).fit().into(holder.binding.foodImage, new Callback() {
             @Override
             public void onSuccess() {
@@ -62,6 +74,7 @@ public class AdapterFood extends RecyclerView.Adapter<AdapterFood.viewHolder> {
                     holder.binding.foodPrice);
 
         });
+
     }
 
     @Override

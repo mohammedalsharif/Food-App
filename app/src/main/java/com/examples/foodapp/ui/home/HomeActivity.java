@@ -24,14 +24,14 @@ import com.examples.foodapp.R;
 import com.examples.foodapp.databinding.ActivityHomeBinding;
 import com.examples.foodapp.ui.Login.LogInActivity;
 import com.examples.foodapp.ui.Login.LoginFragment;
-import com.examples.foodapp.ui.home.bottomFragment.CartFragment;
-import com.examples.foodapp.ui.home.bottomFragment.HomeFragment;
-import com.examples.foodapp.ui.home.bottomFragment.FavoriteFragment;
-import com.examples.foodapp.ui.home.bottomFragment.UserFragment;
 import com.examples.foodapp.ui.home.SlidingRootNav.menu.DrawerAdapter;
 import com.examples.foodapp.ui.home.SlidingRootNav.menu.DrawerItem;
 import com.examples.foodapp.ui.home.SlidingRootNav.menu.SimpleItem;
 import com.examples.foodapp.ui.home.SlidingRootNav.menu.SpaceItem;
+import com.examples.foodapp.ui.home.bottomFragment.CartFragment;
+import com.examples.foodapp.ui.home.bottomFragment.FavoriteFragment;
+import com.examples.foodapp.ui.home.bottomFragment.HomeFragment;
+import com.examples.foodapp.ui.home.bottomFragment.UserFragment;
 import com.examples.foodapp.utils.Methods;
 import com.examples.foodapp.utils.MyReceiverInternetCase;
 import com.examples.foodapp.utils.OnInternetCaseChange;
@@ -46,11 +46,14 @@ import io.ak1.OnBubbleClickListener;
 public class HomeActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
     MyReceiverInternetCase receiverInternetCase;
     ActivityHomeBinding binding;
-    private static final int POS_DASHBOARD = 0;
+    private static final int POS_HOME = 0;
     private static final int POS_ACCOUNT = 1;
-    private static final int POS_MESSAGES = 2;
-    private static final int POS_CART = 3;
+    private static final int POS_CART = 2;
+    private static final int POS_FAVORITE = 3;
+    private static final int POS_ORDERS =4;
+
     private static final int POS_LOGOUT = 5;
+
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -58,6 +61,7 @@ public class HomeActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private SlidingRootNav slidingRootNav;
     SharedPreferences sp ;
     SharedPreferences.Editor editor ;
+    FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements DrawerAdapter.OnI
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         receiverInternet();
-        FragmentManager fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager();
 
         binding.bubbleTabBar.addBubbleListener(new OnBubbleClickListener() {
             @Override
@@ -106,11 +110,12 @@ public class HomeActivity extends AppCompatActivity implements DrawerAdapter.OnI
         screenTitles = loadScreenTitles();
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
-                createItemFor(POS_DASHBOARD).setChecked(true),
+                createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_ACCOUNT),
-                createItemFor(POS_MESSAGES),
                 createItemFor(POS_CART),
-                new SpaceItem(48),
+                createItemFor(POS_FAVORITE),
+                createItemFor(POS_ORDERS),
+                new SpaceItem(80),
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
 
@@ -119,20 +124,35 @@ public class HomeActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
 
-        adapter.setSelected(POS_DASHBOARD);
+        adapter.setSelected(POS_HOME);
     }
 
     @Override
     public void onItemSelected(int position) {
-        if (position == POS_LOGOUT) {
-            editor.putBoolean(LoginFragment.CHECK_BOX_STATE,false);
-            FirebaseAuth.getInstance().signOut();
-           startActivity(new Intent(HomeActivity.this, LogInActivity.class));
-           finish();
+
+        switch (position){
+            case POS_HOME:
+                binding.bubbleTabBar.setSelected(0,true);
+                break;
+                case POS_FAVORITE:
+                binding.bubbleTabBar.setSelected(1,true);
+                break;
+              case POS_ACCOUNT:
+                binding.bubbleTabBar.setSelected(2,true);
+                break;
+                case POS_CART:
+                binding.bubbleTabBar.setSelected(3,true);
+                break;
+              case POS_LOGOUT+1:
+                editor.putBoolean(LoginFragment.CHECK_BOX_STATE,false);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(HomeActivity.this, LogInActivity.class));
+                finish();
+                break;
         }
         slidingRootNav.closeMenu();
-        Fragment selectedScreen = HomeFragment.createFor(screenTitles[position]);
-        showFragment(selectedScreen);
+
+
     }
 
     private void showFragment(Fragment fragment) {

@@ -39,14 +39,19 @@
     <string name="str_foods">Foods</string>
     <string name="str_drins">Drinks</string>
     <string name="str_snacks">Snacks</string>
+    <string name="str_delivery_info">Delivery info</string>
+    <string name="str_return_policy">Return policy</string>
+    <string name="str_desc_deliver_info">Delivered between monday aug and thursday 20 from 8pm to 91:32 pm</string>
+    <string name="str_policy">All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.</string>
+    <string name="str_add_to_cart">Add to cart</string>
 
 
     <string-array name="ld_activityScreenTitles">
+        <item>HOME</item>
         <item>My Account</item>
         <item>orders</item>
-        <item>offer and promo</item>
+        <item>favorite</item>
         <item>Privacy policy</item>
-        <item />
         <item>Log Out</item>
     </string-array>
 </resources>

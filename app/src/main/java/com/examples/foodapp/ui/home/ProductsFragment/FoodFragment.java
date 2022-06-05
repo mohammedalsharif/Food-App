@@ -63,6 +63,7 @@ public class FoodFragment extends Fragment {
             public void OnClickItemListener(Food food, View card, TextView tvName, TextView tvPrice) {
                 Intent intent = new Intent(getContext(), DetailsActivity.class);
                 intent.putExtra("Food", food);
+                intent.putExtra("Reference", reference);
 
                 Pair[] pairs = new Pair[3];
 
@@ -76,16 +77,21 @@ public class FoodFragment extends Fragment {
             }
         });
         adapterFood.setListFood(listFood);
+
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listFood.clear();
+                   listFood.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Food foods = dataSnapshot.getValue(Food.class);
+                    foods.setId(dataSnapshot.getKey());
                     listFood.add(foods);
                 }
-
+                binding.shimmer.stopShimmer();
+                binding.shimmer.setVisibility(View.GONE);
+                binding.recOrder.setVisibility(View.VISIBLE);
                 adapterFood.notifyDataSetChanged();
+
             }
 
             @Override

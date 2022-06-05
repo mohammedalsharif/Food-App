@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     android:layoutDirection="ltr"
     android:orientation="vertical">
 
@@ -57,18 +57,17 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="240dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content" />
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="100dp" />
+
 
     <ImageView
 
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="start"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_bg_splash" />
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,8 +16,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <LinearLayout
@@ -33,11 +36,11 @@
 
 
                 <com.google.android.material.imageview.ShapeableImageView
-                 android:id="@+id/imageUser"
+                    android:id="@+id/imageUser"
                     android:layout_width="110dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                   android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="8dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/userimg"
                     app:shapeAppearanceOverlay="@style/roundImage" />
@@ -46,11 +49,10 @@
                     android:id="@+id/btn_addImage"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="bottom|end"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:src="@drawable/blus"
-                    android:layout_gravity="bottom|end"
-                    />
+                    android:src="@drawable/blus" />
 
             </FrameLayout>
 
@@ -72,6 +74,7 @@
                     android:id="@+id/name_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsansbold"
                     android:hint="@string/your_name"
                     android:inputType="textPersonName"
                     android:textCursorDrawable="@color/colorPrimary"
@@ -96,8 +99,8 @@
                     android:id="@+id/email_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsansbold"
                     android:hint="@string/email"
-
                     android:inputType="textEmailAddress"
                     android:textCursorDrawable="@color/colorPrimary"
                     app:hintTextColor="@color/colorPrimary" />
@@ -122,6 +125,7 @@
                     android:id="@+id/password_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsansbold"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textCursorDrawable="@color/colorPrimary"

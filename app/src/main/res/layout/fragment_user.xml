@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/dmsansbold"
         android:text="@string/str_my_profile"
         android:textColor="@color/black"
         android:textSize="32sp"
@@ -33,8 +33,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/dmsansbold"
             android:text="@string/str_personal_details"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -51,20 +51,20 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ProgressBar
                     android:id="@+id/progressDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:indeterminateTint="@color/colorPrimary"
-                    />
+                    android:indeterminateTint="@color/colorPrimary" />
 
                 <LinearLayout
                     android:id="@+id/linearDetails"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/im_UserDetails"
@@ -79,13 +79,15 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="35dp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp">
 
                         <TextView
                             android:id="@+id/userName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
+                            android:fontFamily="@font/dmsansbold"
                             android:text="Marvis lghedosa"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -94,6 +96,7 @@
                             android:id="@+id/userEmail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsansbold"
                             android:text="Dosamarvis@gmail.com"
                             android:textSize="15sp" />
 
@@ -109,6 +112,8 @@
                             android:id="@+id/userNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsansbold"
+                            android:gravity="start"
                             android:text="+972 592677218"
                             android:textSize="16sp" />
 
@@ -120,8 +125,9 @@
                             android:background="@color/home" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsansbold"
                             android:text="No 15 uti street off ovie palace road effurun delta state" />
                     </LinearLayout>
                 </LinearLayout>

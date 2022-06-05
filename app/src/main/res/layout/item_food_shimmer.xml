@@ -26,33 +26,15 @@
             android:layout_height="164dp"
             android:layout_gravity="center|top"
             android:layout_marginLeft="10dp"
-            app:cardCornerRadius="82dp"
+            android:foreground="@color/colorGrey"
             android:transitionName="cardTransition"
+            app:cardCornerRadius="82dp"
             app:cardElevation="10dp"
             app:cardPreventCornerOverlap="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.github.ybq.android.spinkit.SpinKitView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/spinKit"
-                style="@style/SpinKitView.Large.DoubleBounce"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                app:SpinKit_Color="@color/colorPrimary" />
-
-            <ImageView
-                android:id="@+id/food_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop"
-                android:src="@drawable/afood"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.cardview.widget.CardView>
 
@@ -72,6 +54,7 @@
                 android:layout_width="200dp"
                 android:layout_height="260dp"
                 android:elevation="15dp"
+
                 android:gravity="center_horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,34 +63,38 @@
 
                 <TextView
                     android:id="@+id/food_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorGrey"
                     android:fontFamily="@font/dmsansbold"
                     android:gravity="center"
                     android:maxLines="2"
-                    android:transitionName="nameTransition"
-                    android:padding="10dp"
-                    android:text="Veggie tomato mix"
+
+                    android:padding="3dp"
                     android:textColor="@android:color/black"
                     android:textSize="22sp"
+                    android:transitionName="nameTransition"
                     app:layout_constraintBottom_toTopOf="@+id/food_price"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/food_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/dmsansbold"
-                    android:text="N1,900"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
 
-                    android:transitionName="priceTransition"
+                    android:layout_marginBottom="16dp"
+
+                    android:background="@color/colorGrey"
+                    android:fontFamily="@font/dmsansbold"
                     android:textColor="@color/colorPrimary"
                     android:textSize="17sp"
+                    android:transitionName="priceTransition"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

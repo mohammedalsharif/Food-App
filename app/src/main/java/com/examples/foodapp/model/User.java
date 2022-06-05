@@ -7,6 +7,7 @@ public class User {
     private String uEmail;
     private String uPassword;
 
+
     public User() {
     }
 
@@ -17,6 +18,7 @@ public class User {
         this.uEmail = uEmail;
         this.uPassword = uPassword;
     }
+
 
     public String getImageUrl() {
         return imageUrl;

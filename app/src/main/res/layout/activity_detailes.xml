@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/dmsansbold"
         android:text="Veggie tomato mix"
 
         android:textColor="@color/black"
@@ -99,7 +99,7 @@
         android:id="@+id/etFoodPriceDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/dmsansbold"
         android:text="N1,900"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
@@ -114,7 +114,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
@@ -124,31 +124,32 @@
         app:layout_constraintTop_toBottomOf="@+id/etFoodPriceDet">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Delivery info"
+            android:fontFamily="@font/dmsansbold"
+            android:text="@string/str_delivery_info"
+
             android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Delivered between monday aug and thursday 20 from 8pm to 91:32 pm" />
+            android:fontFamily="@font/dmsansbold"
+            android:text="@string/str_desc_deliver_info" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Return policy"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/dmsansbold"
+            android:text="@string/str_return_policy"
             android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately." />
+            android:fontFamily="@font/dmsansbold"
+            android:text="@string/str_policy" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -159,7 +160,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/dmsansbold"
         android:gravity="center"
-        android:text="Add to cart"
+        android:text="@string/str_add_to_cart"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"

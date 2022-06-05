@@ -1,7 +1,6 @@
 package com.examples.foodapp.ui.Login;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -15,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,30 +21,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.examples.foodapp.R;
+import com.examples.foodapp.data.UploadUserListener;
+import com.examples.foodapp.data.UploadUserToFirebase;
 import com.examples.foodapp.databinding.FragmentSignUpBinding;
-import com.examples.foodapp.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 
 
 public class SignUpFragment extends Fragment {
     private FirebaseAuth mAuth;
-    private FirebaseFirestore firebaseFirestore;
-    public StorageReference storageReference;
-
+    private UploadUserToFirebase uploadUserToFirebase;
     private String mName;
     private String mEmail;
     private String mPassword;
@@ -75,10 +64,7 @@ public class SignUpFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
-
-        storageReference = FirebaseStorage.getInstance().getReference("ImagesUsers");
-
+        uploadUserToFirebase = new UploadUserToFirebase(getActivity(), "ImagesUsers");
     }
 
     @Override
@@ -183,7 +169,7 @@ public class SignUpFragment extends Fragment {
             Intent galleryIntent = new Intent();
             galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
             galleryIntent.setType("image/*");
-           startActivityForResult(galleryIntent, REQUEST_CODE_ADD_IMG);
+            startActivityForResult(galleryIntent, REQUEST_CODE_ADD_IMG);
         });
 
         return binding.getRoot();
@@ -195,13 +181,32 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    CreateUserSuccess();
+
                     FirebaseUser user = mAuth.getCurrentUser();
-                    if (imageUri!=null&&user != null) {
-                        uploadToFireBase(user.getUid(), mName, mEmail);
+                    if (imageUri != null && user != null) {
+                        uploadUserToFirebase.uploadToFireBase(imageUri, user.getUid(), mName, mEmail, new UploadUserListener() {
+                            @Override
+                            public void OnSuccessUpload(boolean success) {
+                                if (success) {
+                                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.chek_green);
+                                    btnRegister.doneLoadingAnimation(getResources().getColor(R.color.white), bitmap);
+                                    Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                                    CreateUserSuccess();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            btnRegister.revertAnimation();
+                                            btnRegister.setBackground(getResources().getDrawable(R.drawable.borer_rait));
+                                        }
+                                    }, 2000);
+                                }
+                            }
 
-                       // uploadUser(user.getUid(),mName,mEmail);
+                            @Override
+                            public void OnProgress(boolean progress) {
 
+                            }
+                        });
                     }
                 } else {
                     btnRegister.revertAnimation();
@@ -216,82 +221,21 @@ public class SignUpFragment extends Fragment {
 
     }
 
-    private void StoreUserInFireStore(String uId,String urlImage,String mName, String mEmail, String mPassword) {
-        firebaseFirestore.collection("users").add(new User(uId, urlImage,mName, mEmail, mPassword))
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.chek_green);
-                        btnRegister.doneLoadingAnimation(getResources().getColor(R.color.white), bitmap);
-                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                btnRegister.revertAnimation();
-                                btnRegister.setBackground(getResources().getDrawable(R.drawable.borer_rait));
-                            }
-                        }, 2000);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-
-                        Log.w("Failure", "Error adding document", e);
-                    }
-                });
-
-
-    }
 
     private void CreateUserSuccess() {
         Toast.makeText(getContext(), "createUserWithEmail:success", Toast.LENGTH_SHORT).show();
         binding.emailTxt.setText("");
         binding.passwordTxt.setText("");
         binding.nameTxt.setText("");
+        binding.imageUser.setImageResource(R.drawable.userimg);
     }
-
-
-    public void uploadToFireBase(String uId, String userName, String userEmail) {
-        StorageReference fileRef = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        StoreUserInFireStore(uId,uri.toString(),userName,userEmail,"");
-                        binding.imageUser.setImageResource(R.drawable.userimg);
-                    }
-                });
-
-
-            }
-        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-
-            }
-        });
-
-    }
-
-    private String getFileExtension(Uri imageUri) {
-
-        ContentResolver resolver =getActivity().getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(resolver.getType(imageUri));
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       if (resultCode== Activity.RESULT_OK&&requestCode==REQUEST_CODE_ADD_IMG&&data!=null){
-           imageUri=data.getData();
-           binding.imageUser.setImageURI(imageUri);
-       }
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_ADD_IMG && data != null) {
+            imageUri = data.getData();
+            binding.imageUser.setImageURI(imageUri);
+        }
     }
 }

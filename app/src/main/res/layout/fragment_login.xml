@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
+                    android:fontFamily="@font/dmsansbold"
                     android:textCursorDrawable="@color/colorPrimary"
                     app:hintTextColor="@color/colorPrimary" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
+                    android:fontFamily="@font/dmsansbold"
                     android:inputType="textPassword"
                     android:textCursorDrawable="@color/colorPrimary"
                     app:endIconMode="password_toggle"
@@ -79,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/cairo"
+                android:fontFamily="@font/dmsansbold"
                 android:textStyle="bold"
                 android:padding="10dp"
                 android:button="@drawable/custome_chexkbox"

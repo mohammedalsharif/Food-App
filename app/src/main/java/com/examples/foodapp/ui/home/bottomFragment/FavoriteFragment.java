@@ -5,84 +5,82 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.examples.foodapp.adapters.AdapterFavFood;
 import com.examples.foodapp.databinding.FragmentFavoriteBinding;
+import com.examples.foodapp.model.Food;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FavoriteFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FavoriteFragment extends Fragment {
+    Query query;
+    Query query2;
+    Query query3;
+    ValueEventListener valueEventListener;
+    private DatabaseReference dbRef;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public FavoriteFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FavoriteFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FavoriteFragment newInstance(String param1, String param2) {
-        FavoriteFragment fragment = new FavoriteFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        query = FirebaseDatabase.getInstance().getReference("Foods").orderByChild("isFavorite").equalTo("IsFavorite");
+        query2 = FirebaseDatabase.getInstance().getReference("Drinks").orderByChild("isFavorite").equalTo("IsFavorite");
+        query3 = FirebaseDatabase.getInstance().getReference("Snacks").orderByChild("isFavorite").equalTo("IsFavorite");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FragmentFavoriteBinding binding =FragmentFavoriteBinding.inflate(inflater);
-        AdapterFavFood adapterFood =new AdapterFavFood();
-        ArrayList<String> list=new ArrayList<>();
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-        list.add("Veggie tomato mix");
-
+        FragmentFavoriteBinding binding = FragmentFavoriteBinding.inflate(inflater);
+        AdapterFavFood adapterFood = new AdapterFavFood();
+        ArrayList<Food> list = new ArrayList<>();
         adapterFood.setList(list);
+        valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        Food food = snapshot1.getValue(Food.class);
+                        list.add(food);
+
+                    }
+                    adapterFood.setList(list);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        query.addValueEventListener(valueEventListener);
+        query2.addValueEventListener(valueEventListener);
+        query3.addValueEventListener(valueEventListener);
+
+
+
         binding.recFavFood.setHasFixedSize(true);
         binding.recFavFood.setAdapter(adapterFood);
-        binding.recFavFood.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        binding.recFavFood.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
 
         return binding.getRoot();
     }
+
+
 }
