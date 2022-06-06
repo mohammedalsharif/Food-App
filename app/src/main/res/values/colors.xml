@@ -22,6 +22,7 @@
     <color name="ic_color">#ADADAF</color>
     <color name="color_login">#BCBABA</color>
     <color name="read">#DA0404</color>
+    <color name="read_icon">#880000</color>
     <color name="green">#02953F</color>
     <color name="colorGrey">#E7E7E7</color>
 </resources>

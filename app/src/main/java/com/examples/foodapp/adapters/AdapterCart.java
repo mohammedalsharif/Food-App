@@ -17,6 +17,11 @@ import java.util.List;
 
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar> {
     private List<Food> listCart;
+    OnClickRemoveItem removeItem;
+
+    public AdapterCart(OnClickRemoveItem removeItem) {
+        this.removeItem = removeItem;
+    }
 
     public void setList(List<Food> list) {
         this.listCart = list;
@@ -32,7 +37,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHoldar holder, int position) {
-        Food food =listCart.get(position);
+        Food food = listCart.get(position);
         Picasso.get().load(food.getImageUrl()).fit().into(holder.binding.foodImage, new Callback() {
             @Override
             public void onSuccess() {
@@ -46,13 +51,16 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.CartViewHoldar
         });
         holder.binding.foodName.setText(food.getFoodName());
         holder.binding.foodPrice.setText(food.getFoodPrice());
-
         holder.binding.plusCart.setOnClickListener(view -> {
 
             int numberCart = Integer.parseInt(holder.binding.numberCart.getText().toString());
             holder.binding.numberCart.setText(String.valueOf(numberCart + 1));
-            holder.binding.foodPrice.setText(increasePrice(holder.binding.foodPrice,numberCart));
+            holder.binding.foodPrice.setText(increasePrice(holder.binding.foodPrice, numberCart));
         });
+        holder.binding.btnRemove.setOnClickListener(view -> {
+            removeItem.ItemClickRemove(food.getId());
+        });
+
 
         holder.binding.removeCart.setOnClickListener(view -> {
             int numberCart = Integer.parseInt(holder.binding.numberCart.getText().toString());
